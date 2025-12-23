@@ -1,0 +1,29 @@
+@import './custom.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Button Styles for cleaner HTML */
+@layer components {
+    .btn-num {
+        @apply bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 text-2xl font-medium p-4 rounded-2xl shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 active:scale-95 transition-all duration-150;
+    }
+
+    .btn-op {
+        @apply bg-gray-100 dark:bg-gray-700 text-primary-600 dark:text-primary-400 text-2xl font-medium p-4 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600 active:scale-95 transition-all duration-150;
+    }
+
+    .btn-sci {
+        @apply bg-transparent text-gray-600 dark:text-gray-400 text-xs font-medium py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 dark:active:bg-gray-600 transition-colors;
+    }
+
+    .btn-func {
+        @apply bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-lg font-medium p-4 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600 active:scale-95 transition-all duration-150;
+    }
+
+    /* History Item Style */
+    .history-item {
+        @apply p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition-colors border border-transparent hover:border-primary-200 dark:hover:border-primary-700;
+    }
+}
