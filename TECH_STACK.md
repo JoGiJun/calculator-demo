@@ -440,15 +440,15 @@ npm create vite@latest calculator-app -- --template vanilla
 
 ### 6.1 테스트 프레임워크
 
-**Jest** (JavaScript 테스트)
+**Jest** (JavaScript 테스트 - 코어 로직만)
 ```bash
 npm install --save-dev jest
 ```
 
 **테스트 구조**:
 ```javascript
-// tests/calculator.test.js
-import { Calculator } from '../js/calculator.js';
+// tests/unit/calculator.test.js
+import { Calculator } from '../js/core/calculator/Calculator.js';
 
 describe('Calculator', () => {
   let calc;
@@ -469,28 +469,28 @@ describe('Calculator', () => {
 
 ### 6.2 테스트 유형
 
-#### 단위 테스트 (Unit Tests)
+#### 단위 테스트 (Unit Tests) - 자동화
 - 계산 함수 테스트
 - 각도 변환 테스트
 - 에러 핸들링 테스트
+- 수식 파싱 테스트
+- 저장소 로직 테스트
 
-#### 통합 테스트 (Integration Tests)
+#### 통합 테스트 (Integration Tests) - 자동화
 - UI와 계산 로직 통합
 - LocalStorage 저장/로드
 
-#### E2E 테스트 (End-to-End)
-- **Playwright** 또는 **Cypress**
-```javascript
-// e2e/calculator.spec.js
-test('should perform calculation', async ({ page }) => {
-  await page.goto('http://localhost:5173');
-  await page.click('button:has-text("7")');
-  await page.click('button:has-text("+")');
-  await page.click('button:has-text("3")');
-  await page.click('button:has-text("=")');
-  await expect(page.locator('.result')).toHaveText('10');
-});
-```
+#### 수동 테스트 (Manual Tests) - UI 레이어
+- 브라우저에서 직접 기능 테스트
+- 반응형 디자인 확인
+- 크로스 브라우저 테스트
+- 접근성 검증
+
+> [!IMPORTANT]
+> **UI 자동화 테스트는 수행하지 않습니다**
+> - E2E 테스트 도구 사용 안 함
+> - 모든 UI 기능은 수동 검증
+
 
 ---
 

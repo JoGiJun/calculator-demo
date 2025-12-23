@@ -28,7 +28,7 @@
 
 #### TDD 적용 범위
 
-**✅ TDD 적용 (필수)**:
+**✅ TDD 적용 (자동화 테스트 필수)**:
 - `calculator.js` - 계산 로직
 - `expression-parser.js` - 수식 파싱
 - `angle-converter.js` - 각도 변환
@@ -36,10 +36,13 @@
 - `validator.js` - 입력 검증
 - `formatter.js` - 결과 포맷팅
 
-**❌ TDD 제외 (선택적)**:
+**🔍 수동 테스트 (자동화 테스트 제외)**:
 - `ui.js` - UI 렌더링 및 이벤트 핸들링
 - `main.js` - 앱 초기화
 - DOM 조작 관련 코드
+- 브라우저 인터랙션
+- 시각적 디자인 검증
+
 
 #### TDD 워크플로우 예시
 
@@ -344,26 +347,35 @@ describe('Calculator', () => {
   });
   
   describe('divide', () => {
-    test('should divide two numbers', () => {});
-    test('should throw error when dividing by zero', () => {});
-  });
-});
-```
+    test('should divide two numbers',### 6.2 테스트 유형
 
-#### 2. AAA 패턴 (Arrange-Act-Assert)
+#### 단위 테스트 (Unit Tests) - 코어 로직만
+- 계산 함수 테스트
+- 각도 변환 테스트
+- 에러 핸들링 테스트
+- 수식 파싱 테스트
+- 저장소 로직 테스트
 
-```javascript
-test('should calculate sin(30) in DEG mode', () => {
-  // Arrange: 테스트 준비
-  const calc = new Calculator('DEG');
-  
-  // Act: 실행
-  const result = calc.evaluate('sin(30)');
-  
-  // Assert: 검증
-  expect(result).toBeCloseTo(0.5, 5);
-});
-```
+#### 통합 테스트 (Integration Tests) - 코어 로직만
+- Calculator와 Parser 통합
+- Calculator와 Storage 통합
+- 전체 계산 플로우 테스트
+
+#### 수동 테스트 (Manual Tests) - UI 레이어
+- 브라우저에서 직접 테스트
+- 버튼 클릭 동작 확인
+- 키보드 입력 확인
+- 반응형 디자인 확인
+- 다크/라이트 모드 전환 확인
+- 애니메이션 동작 확인
+- 크로스 브라우저 테스트
+
+> [!NOTE]
+> **UI 테스트는 자동화하지 않습니다**
+> - E2E 테스트 도구(Playwright, Cypress) 사용 안 함
+> - UI 컴포넌트 테스트 없음
+> - 모든 UI 기능은 수동으로 검증
+
 
 #### 3. 테스트 격리
 
