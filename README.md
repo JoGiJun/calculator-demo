@@ -2,6 +2,9 @@
 
 A fully functional, web-based engineering calculator built with vanilla JavaScript and modern web technologies. Designed with a focus on modular architecture (SOLID principles), clean UI/UX, and robust testing.
 
+[![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://JoGiJun.github.io/calculator-demo/)
+[![Build Status](https://github.com/JoGiJun/calculator-demo/actions/workflows/deploy.yml/badge.svg)](https://github.com/JoGiJun/calculator-demo/actions)
+
 ![Calculator Screenshot](./docs/screenshot.png) <!-- Replace with actual screenshot -->
 
 ## ✨ Key Features
