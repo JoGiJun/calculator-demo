@@ -1,11 +1,35 @@
-# 🧮 Modern Component-Based Engineering Calculator
+# 🧮 Modern Bionic Calculator (Portfolio Project)
 
-A fully functional, web-based engineering calculator built with vanilla JavaScript and modern web technologies. Designed with a focus on modular architecture (SOLID principles), clean UI/UX, and robust testing.
+> **"Not just a calculator, but a demonstration of Solid Engineering Principles."**
+
+This project is a high-fidelity **Engineering Calculator** designed to demonstrate advanced **Frontend Engineering** skills. Built with **Vanilla JavaScript** (ES Modules) without heavy reliance on UI frameworks like React or Vue, it showcases a deep understanding of:
+
+-   **Software Architecture**: Strictly follows **MVC Pattern** and **SOLID Principles**.
+-   **Quality Assurance**: Developed using **TDD (Test-Driven Development)** with 100% core logic coverage.
+-   **Modern UX**: Features glassmorphism design, fluid animations, and robust input validation.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://JoGiJun.github.io/calculator-demo/)
 [![Build Status](https://github.com/JoGiJun/calculator-demo/actions/workflows/deploy.yml/badge.svg)](https://github.com/JoGiJun/calculator-demo/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Calculator Screenshot](./docs/screenshot.png) <!-- Replace with actual screenshot -->
+![Calculator Screenshot](./docs/screenshot.png)
+
+## 🎯 Design Philosophy & Technical Highlights
+
+This project was built to prove that **scalable, maintainable code** can be written without frameworks by sticking to fundamental engineering principles.
+
+### 1. Zero-Framework Architecture
+Instead of using React/Vue, I implemented a custom **Component-Based MVC** architecture.
+-   **Why?** To demonstrate mastery of the DOM API, Event Delegation, and State Management fundamentals.
+
+### 2. Test-Driven Development (TDD)
+Every feature started with a failing test. core logic is rigorously tested using **Jest**.
+-   **Coverage**: Unit tests cover implementations of Parser (Shunting-yard algorithm), Validators, and Operations.
+
+### 3. SOLID Principles in Action
+-   **Single Responsibility**: Separated `Parser`, `Validator`, `Formatter`, and `Calculator` classes.
+-   **Open/Closed**: New operations (e.g., `sin`, `log`) can be added by extending the `Operation` class without modifying the calculator core.
+-   **Dependency Inversion**: High-level modules depend on abstractions (interfaces), not concrete implementations.
 
 ## ✨ Key Features
 
