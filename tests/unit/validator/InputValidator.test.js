@@ -12,13 +12,13 @@ describe('InputValidator', () => {
     test('should detect empty input', () => {
         const result = validator.validate('');
         expect(result.isValid).toBe(false);
-        expect(result.error).toBe('Input is empty');
+        expect(result.error).toBe('Empty expression');
     });
 
     test('should detect invalid characters', () => {
         const result = validator.validate('2 + 3 @');
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Invalid character');
+        expect(result.error).toContain('Invalid characters');
     });
 
     test('should detect mismatched parentheses', () => {
@@ -40,6 +40,6 @@ describe('InputValidator', () => {
     test('should not end with an operator', () => {
         const result = validator.validate('2 +');
         expect(result.isValid).toBe(false);
-        expect(result.error).toBe('Expression cannot end with an operator');
+        expect(result.error).toBe('Expression cannot end with operator');
     });
 });

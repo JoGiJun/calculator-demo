@@ -170,6 +170,17 @@ export default class UIController {
     calculate() {
         if (!this.currentExpression) return;
 
+        // Auto-close parentheses
+        let expr = this.currentExpression;
+        const openCount = (expr.match(/\(/g) || []).length;
+        const closeCount = (expr.match(/\)/g) || []).length;
+        if (openCount > closeCount) {
+            expr += ')'.repeat(openCount - closeCount);
+            // Update display to show the auto-closed parens (optional, but good UX)
+            this.displayManager.updateExpression(expr);
+            this.currentExpression = expr;
+        }
+
         // 1. Validate
         const validation = this.validator.validate(this.currentExpression);
         if (!validation.isValid) {

@@ -13,6 +13,9 @@ A fully functional, web-based engineering calculator built with vanilla JavaScri
 -   **Advanced History**: Slide-over panel to view, restore, and manage calculation history.
 -   **Smart Editing**:
     -   **Detailed Input Validation**: Prevents invalid syntax before calculation.
+    -   **Smart Editing**:
+        -   **Auto-Parentheses**: Automatically handles closing parentheses for functions.
+        -   **Visual Formatting**: Enhanced display for scientific symbols like Square Root.
     -   **Context-Aware Toggles**: Smart `+/-` sign toggling and percentage calculations.
 -   **Customization**:
     -   **Dark/Light Theme**: Automatically respects system preference, with manual toggle.

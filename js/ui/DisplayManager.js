@@ -7,12 +7,12 @@ export default class DisplayManager {
 
     updateExpression(expression) {
         if (!this.expressionEl) return;
-        this.expressionEl.textContent = this._formatExpression(expression);
+        this.expressionEl.innerHTML = this._formatExpression(expression);
     }
 
     updateResult(result, isError = false) {
         if (!this.resultEl) return;
-        this.resultEl.textContent = result;
+        this.resultEl.textContent = result; // Result is usually just number, textContent is safer/fine
 
         if (isError) {
             this.resultEl.classList.add('text-red-500');
@@ -25,7 +25,9 @@ export default class DisplayManager {
 
     updateHistoryPreview(lastExpression) {
         if (!this.historyEl) return;
-        this.historyEl.textContent = lastExpression ? `${lastExpression} =` : '';
+        // History preview might also benefit from formatting
+        const formatted = this._formatExpression(lastExpression);
+        this.historyEl.innerHTML = lastExpression ? `${formatted} =` : '';
     }
 
     clearAll() {
@@ -36,11 +38,22 @@ export default class DisplayManager {
 
     // Helper to make expression more readable (e.g. replacing * with ×)
     _formatExpression(expression) {
-        return expression
+        // 1. Basic token replacements (Order matters: do this BEFORE injecting HTML)
+        let formatted = expression
             .replace(/\*/g, '×')
             .replace(/\//g, '÷')
-            .replace(/sqrt/g, '√')
             .replace(/pi/g, 'π')
             .replace(/\^/g, '^');
+
+        // 2. Handle Square Root visual style: sqrt(content) -> √<span class="sqrt-span">content</span>
+        // We use pseudo-element in CSS to draw the line
+        // matches 'sqrt(' followed by anything not ')' until ')'
+        // Note: formatted string now has '÷' instead of '/', so this regex still works on the content.
+        formatted = formatted.replace(/sqrt\(([^\)]*)\)/g, '√<span class="sqrt-span">$1</span>');
+
+        // 3. Cleanup loose 'sqrt' if any (e.g. incomplete typing)
+        formatted = formatted.replace(/sqrt/g, '√');
+
+        return formatted;
     }
 }

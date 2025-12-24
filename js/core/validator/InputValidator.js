@@ -9,7 +9,7 @@ export default class InputValidator {
 
         // 1. Check for invalid characters
         // Added % to valid regex
-        if (/[^0-9+\-*/().^%e\s]/.test(clean)) {
+        if (/[^0-9+\-*/().^%ea-z\s]/.test(clean)) {
             return { isValid: false, error: 'Invalid characters' };
         }
 
